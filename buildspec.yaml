@@ -28,15 +28,14 @@ phases:
       # name: version
     commands:
        - sudo apt-get update
-       - sudo apt-get install maven -y
-       - mvn --version
+       - sudo apt-get install apache2
   #pre_build:
     #commands:
       # - command
       # - command
   build:
     commands:
-       - mvn clean install -Dskiptests
+       - mvn install -Dskiptest
       # - command
   post_build:
     commands:
