@@ -2,11 +2,10 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: corretto11  # Choose corretto8 or corretto17 as needed
     commands:
-      - echo Installing dependencies
-      - mvn clean install -DskipTests=true
+      - sudo apt-get update
+      - sudo apt-get install maven -y
+      - mvn --version
 
   pre_build:
     commands:
