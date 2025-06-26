@@ -36,7 +36,7 @@ phases:
       # - command
   build:
     commands:
-       - mvn install -Dskiptest
+       - mvn clean install -Dskiptests
       # - command
   post_build:
     commands:
