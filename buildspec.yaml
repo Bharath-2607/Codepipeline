@@ -30,13 +30,14 @@ phases:
        - sudo apt-get update
        - sudo apt-get install maven -y
        - mvn --version
-  #pre_build:
-    #commands:
-      # - command
-      # - command
+  pre_build:
+    commands:
+      - echo Pre-build: Cleaning previous builds
+      - mvn clean
   build:
     commands:
-       - mvn clean install -Dskiptests
+      - echo Build started on `date`
+      - mvn install -DskipTests
       # - command
   post_build:
     commands:
