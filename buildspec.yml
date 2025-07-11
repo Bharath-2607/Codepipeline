@@ -21,21 +21,26 @@ version: 0.2
   #build-graph:
 phases:
   install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+    #runtime-versions:
+      # name: version
+      # name: version
     commands:
-      - echo Installing NGINX
-      - sudo apt-get update
-      - sudo apt-get install nginx -y
+       - sudo apt-get update
+       - sudo apt-get install maven -y
+       - mvn --version
   #pre_build:
     #commands:
       # - command
       # - command
   build:
     commands:
-      - echo Build started on `date`
-      - cp index.html /var/www/html/
+       - mvn clean install -Dskiptests
+      # - command
   post_build:
     commands:
-      - echo Configuring NGINX
+      - echo "Transfer the artifact..."
       - aws s3 cp target/*.jar s3://codebuild-582155222070/app.jar
 #reports:
   #report-name-or-arn:
